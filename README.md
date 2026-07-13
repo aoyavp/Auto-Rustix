@@ -2,7 +2,7 @@
 
 自动登录 [my.rustix.me](https://my.rustix.me)，进入 Manage Server，检测并启动服务器，通过浏览器控制台 `Running Done!` 与 stop 按钮状态确认上线。支持多账号轮流操作。
 
-## 功能
+## ✨功能
 
 - 多账号轮流登录与操作（每个账号独立浏览器上下文）
 - 自动登录 → 点击 `Manage Server` → 判断 `start` 按钮是否可点击
@@ -27,7 +27,9 @@
 └── .gitignore
 ```
 
-## 配置 Secrets
+## 🛠️部署教程
+
+配置 Secrets
 
 在仓库 **Settings → Secrets and variables → Actions → New repository secret** 添加：
 
@@ -74,7 +76,7 @@
 | 定时器 | 按 cron 周期执行 | 取消注释 `schedule` 段（默认已停用）|
 | Uptime Kuma | 服务器离线时自动触发拉起 | 见下方配置 |
 
-### 方式一：定时触发（默认已停用）
+### 💡方式一：定时触发（默认已停用）
 
 如需恢复定时触发，编辑 workflow 取消注释 `schedule` 段：
 
@@ -89,13 +91,13 @@ on:
 
 > GitHub Actions cron 使用 UTC 时间。
 
-### 方式二：Uptime Kuma 故障触发（推荐，当前默认）
+### 💡方式二：Uptime Kuma 故障触发（推荐，当前默认）
 
 当 Uptime Kuma 检测到服务器离线（DOWN）时，通过 Webhook 调用 GitHub `repository_dispatch` API 触发 workflow；服务器恢复（UP）时触发但自动跳过执行，不浪费 Actions 额度。
 
 **触发逻辑**：workflow 通过 `if` 判断 `client_payload.status` 是否包含 `Down`，仅在 Down 时执行启动流程。
 
-#### 1. 创建 GitHub PAT
+#### ⚙️1、创建 GitHub PAT
 
 Uptime Kuma 调用 GitHub API 需要 Personal Access Token：
 
@@ -106,7 +108,7 @@ Uptime Kuma 调用 GitHub API 需要 Personal Access Token：
    - **Permissions**：Repository permissions → Actions → Read and write
 3. 复制生成的 Token（只显示一次）
 
-#### 2. Uptime Kuma 配置 Webhook 通知
+#### ⚙️2. Uptime Kuma 配置 Webhook 通知
 
 在 Uptime Kuma 新建通知，类型选 **Webhook**：
 
@@ -161,6 +163,6 @@ Uptime Kuma 调用 GitHub API 需要 Personal Access Token：
 - 若站点页面结构更新导致选择器失效，可在 `find_button_by_text` / `find_first_clickable` 中补充选择器。
 - Uptime Kuma 方案下，PAT 存在于 Uptime Kuma 配置中，请确保 Uptime Kuma 所在机器安全；建议用 fine-grained PAT 最小化权限并定期轮换。
 
-## 致谢
+## 🤝致谢
 
 感谢青云大佬源码
