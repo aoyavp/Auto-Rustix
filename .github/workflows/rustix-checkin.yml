@@ -11,9 +11,9 @@ on:
     types: [rustix]
 
 # 同一时间只允许一个实例运行
-#concurrency:
-#  group: rustix-auto
-#  cancel-in-progress: false
+concurrency:
+  group: rustix-auto
+  cancel-in-progress: false
 
 jobs:
   rustix-alive:
