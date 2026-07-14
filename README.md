@@ -165,4 +165,4 @@ Uptime Kuma 调用 GitHub API 需要 Personal Access Token：
 
 ## 🤝致谢
 
-感谢作者青云代码，在原基础上微调代码。
+感谢原作者青云代码，在其基础上微调代码。
