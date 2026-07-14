@@ -29,10 +29,10 @@ jobs:
           echo 'client_payload: ${{ toJSON(github.event.client_payload) }}'
 
       - name: 检出代码
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: 设置 Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.13'
           cache: 'pip'
